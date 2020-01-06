@@ -85,8 +85,8 @@ model <- xgb.cv(data = as.matrix(trainingframe.treat), #perform cross-validation
 )
 (evlog <- model$evaluation_log)
 evlog %>% 
-  summarize(ntrees.train = which.min(train_error_mean),   # find the index of min(train_merror_mean)
-            ntrees.test  = which.min(test_error_mean))   # find the index of min(test_merror_mean)
+  summarize(ntrees.train = which.min(train_merror_mean),   # find the index of min(train_merror_mean)
+            ntrees.test  = which.min(test_merror_mean))   # find the index of min(test_merror_mean)
 #from the above lines, optimal ntrees= 1
 ntrees <- 1
 m_var_xgb <- xgboost(data = as.matrix(trainingframe.treat), # training data as matrix
